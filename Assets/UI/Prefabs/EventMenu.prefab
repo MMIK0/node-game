@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1879025168908152437}
   - component: {fileID: 1521890126219951418}
   - component: {fileID: 3426249336751493724}
-  - component: {fileID: 1044513621178143059}
+  - component: {fileID: 8849485920989258909}
   m_Layer: 5
   m_Name: EventMenu
   m_TagString: Untagged
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1044513621178143059
+--- !u!114 &8849485920989258909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

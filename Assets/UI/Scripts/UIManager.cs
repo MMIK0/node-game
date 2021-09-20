@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(-1)]
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
@@ -48,6 +49,7 @@ public class UIManager : MonoBehaviour
     {
         GameObject menu;
         menus.TryGetValue(type, out menu);
+        Debug.Log(menu);
         menu.SetActive(true);
         ActiveMenu = menu;
     }
@@ -81,6 +83,7 @@ public class UIManager : MonoBehaviour
         else
             return null;
     }
+
 }
 
 [System.Serializable]
