@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010fd64fcf7efb54e9ca69d1e86f5964, type: 3}
+  m_Name: TurkuSpecial
+  m_EditorClassIdentifier: 
+  action:
+    eventType: 1
+    stat: 1
+    eventText: This is special
+    eventImage: {fileID: 0}
+    enemyAdvantage: 0
+    healthLoss: 0
+    moneyChange: 0
+    itemRarity: 0
+    legendaryItems: 0
+    FollowUpEvents:
+    - eventType: 2
+      stat: 0
+      eventText: Hammer Of Common time
+      eventImage: {fileID: 0}
+      enemyAdvantage: 0
+      healthLoss: 0
+      moneyChange: 0
+      itemRarity: 2
+      legendaryItems: 0
+      FollowUpEvents: []
+    - eventType: 2
+      stat: 0
+      eventText: Hmm Rare time?
+      eventImage: {fileID: 0}
+      enemyAdvantage: 0
+      healthLoss: 0
+      moneyChange: 0
+      itemRarity: 2
+      legendaryItems: 0
+      FollowUpEvents: []

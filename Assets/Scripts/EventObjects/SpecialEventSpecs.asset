@@ -13,8 +13,5 @@ MonoBehaviour:
   m_Name: SpecialEventSpecs
   m_EditorClassIdentifier: 
   eventList:
-  - eventTypes: 1
-    eventText: This is a special event hello there
-    enemyAdvantage: 3
-    itemInfo: {fileID: 11400000, guid: 1346dfba7186e2f4cb100808863e23f2, type: 2}
-    stat: 1
+  - itemInfo: {fileID: 11400000, guid: 1346dfba7186e2f4cb100808863e23f2, type: 2}
+    eventAction: {fileID: 11400000, guid: aade20bc2f511164793783d2da3839ef, type: 2}

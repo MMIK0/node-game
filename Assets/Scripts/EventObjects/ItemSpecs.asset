@@ -13,23 +13,38 @@ MonoBehaviour:
   m_Name: ItemSpecs
   m_EditorClassIdentifier: 
   items:
-  - name: ToothBrush
-    description: Very handy for cleaning things.
+  - name: Hammer Of Thor
+    description: This is hammer of thor!
     icon: {fileID: 1634430255447447251, guid: 7f2f43b92b05de24992d2d5e14ac14c5, type: 3}
     statType: 3
     statAmount: 2
+    rarity: 3
+    legendaryStatus: 1
   - name: Posliinivaasi
     description: "Ei norsua l\xE4helle !"
     icon: {fileID: 8432264145578972988, guid: 7f2f43b92b05de24992d2d5e14ac14c5, type: 3}
-    statType: 0
+    statType: 5
     statAmount: 5
+    rarity: 2
+    legendaryStatus: 0
   - name: "Yeppist\xE4"
     description: "Ei norsua l\xE4helle !"
     icon: {fileID: 8927627406293812779, guid: 7f2f43b92b05de24992d2d5e14ac14c5, type: 3}
     statType: 2
     statAmount: 5
+    rarity: 1
+    legendaryStatus: 0
   - name: Joopajoo
     description: "Ei norsua l\xE4helle !"
     icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     statType: 1
     statAmount: 3
+    rarity: 2
+    legendaryStatus: 0
+  - name: Wtf is happening
+    description: jhmph
+    icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    statType: 4
+    statAmount: 3
+    rarity: 2
+    legendaryStatus: 0

@@ -14,20 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - id: 1
-    text: Hello
+    text: This the wasteland known as a Turku, seems like the apocalypse changed
+      nothing.
     image: {fileID: 1634430255447447251, guid: 7f2f43b92b05de24992d2d5e14ac14c5, type: 3}
     eventObj: {fileID: 11400000, guid: 625ae4467f5b4ef4a89c8af436570525, type: 2}
     specialEventObj: {fileID: 11400000, guid: 3b8b209831ec5784b84a48f033093214, type: 2}
-    eventChance: 90
+    eventChance: 0
   - id: 2
-    text: I am here
+    text: Tampere, the city of dreams. Why you ask? Because finally after the apocalypse
+      the ratikka was built. Apocalypse works wonders.
     image: {fileID: 8432264145578972988, guid: 7f2f43b92b05de24992d2d5e14ac14c5, type: 3}
     eventObj: {fileID: 11400000, guid: 625ae4467f5b4ef4a89c8af436570525, type: 2}
-    specialEventObj: {fileID: 11400000, guid: 3b8b209831ec5784b84a48f033093214, type: 2}
-    eventChance: 10
+    specialEventObj: {fileID: 0}
+    eventChance: 0
   - id: 3
-    text: lol
+    text: "T\xE4\xE4 oli joku paikka en muista, sein\xE4joki tyylii?"
     image: {fileID: 8927627406293812779, guid: 7f2f43b92b05de24992d2d5e14ac14c5, type: 3}
     eventObj: {fileID: 11400000, guid: 625ae4467f5b4ef4a89c8af436570525, type: 2}
-    specialEventObj: {fileID: 11400000, guid: 3b8b209831ec5784b84a48f033093214, type: 2}
-    eventChance: 30
+    specialEventObj: {fileID: 0}
+    eventChance: 0
