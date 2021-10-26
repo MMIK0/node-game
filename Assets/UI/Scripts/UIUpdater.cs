@@ -14,23 +14,32 @@ public class UIUpdater : MonoBehaviour
     {
         updateEvent.Invoke();
         UIManager.instance.battleEvent?.AddListener(UpdateBattleText);
+        UIManager.instance.eventNodeTextEvent?.AddListener(UpdateEventText);
     }
     public void OnDisable()
     {
         UIManager.instance.battleEvent?.RemoveListener(UpdateBattleText);
+        UIManager.instance.eventNodeTextEvent?.RemoveListener(UpdateEventText);
     }
     public void UpdateNodeText()
     {
         tmp = GetComponentInChildren<TextMeshProUGUI>();
 
-        tmp.text = UIManager.instance.GetNodeText();
+        tmp.text = NodeManager.instance.GetNodeText();
     }
 
     public void UpdateEventText()
     {
         tmp = GetComponentInChildren<TextMeshProUGUI>();
 
-        tmp.text = UIManager.instance.GetEventText();
+        tmp.text = NodeManager.instance.GetEventText();
+    }
+
+    public void UpdateEventText(string eventText)
+    {
+        tmp = GetComponentInChildren<TextMeshProUGUI>();
+
+        tmp.text = eventText;
     }
 
     private void UpdateBattleText(string battleText)
@@ -44,7 +53,7 @@ public class UIUpdater : MonoBehaviour
 
     public void UpdateImage()
     {
-        GetComponent<Image>().sprite = UIManager.instance.GetNodeImage();
+        GetComponent<Image>().sprite = NodeManager.instance.GetNodeImage();
     }
 }
 [System.Serializable]

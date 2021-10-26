@@ -6,21 +6,28 @@ public class TargetNode : MonoBehaviour
 {
     public int nodeId;
     public NodeInformation.Node node;
+    public List<TargetNode> walkableNodes = new List<TargetNode>();
     public EventObject.NodeEvent nodeEvent { get; private set; }
+
 
     public void OnMouseDown()
     {
-        if(Player.instance.canMove == true)
-            Player.instance?.MovePlayer(this);
+        if (!NodeManager.instance.IsNodeValid(this))
+            return;
 
-        UIManager.instance.currentNode = this;
-        nodeEvent = UIManager.instance.nodeInfo.FindNode(nodeId).GetRandomEvent();
+        NodeManager.instance.MoveToThisNode(this);
+        nodeEvent = NodeManager.instance.nodeInfo.FindNode(nodeId).GetRandomEvent();
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Player>())
+        {
             Player.instance.canMove = false;
+            Player.instance.agent.isStopped = true;
+        }
+        else
+            return;
 
         UIManager.instance.OpenMenu(UIManager.menuType.NodeMenu);
     }

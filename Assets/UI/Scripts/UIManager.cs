@@ -14,8 +14,7 @@ public class UIManager : MonoBehaviour
     public ItemInfoEvent itemTextUpdate;
     public UnityEvent uiEvent;
     public BattleEvent battleEvent;
-    public NodeInformation nodeInfo;
-    public TargetNode currentNode;
+    public NodeTextEvent eventNodeTextEvent;
     public Dictionary<menuType, GameObject> menus = new Dictionary<menuType, GameObject>();
     public GameObject ActiveMenu;
 
@@ -60,30 +59,12 @@ public class UIManager : MonoBehaviour
         ActiveMenu = null;
     }
 
-    public string GetEventText()
+    public GameObject GetMenu(menuType menuType)
     {
-        TargetNode node = currentNode;
-        return node.nodeEvent.eventText;
+        GameObject menu;
+        menus.TryGetValue(menuType, out menu);
+        return menu;
     }
-
-    public string GetNodeText()
-    {
-        NodeInformation.Node node = nodeInfo.FindNode(currentNode.nodeId);
-        if (currentNode.nodeId != 0)
-            return node.text;
-        else
-            return null;
-    }
-
-    public Sprite GetNodeImage()
-    {
-        NodeInformation.Node node = nodeInfo.FindNode(currentNode.nodeId);
-        if (currentNode.nodeId != 0)
-            return node.image;
-        else
-            return null;
-    }
-
 }
 
 [System.Serializable]
@@ -92,3 +73,5 @@ public class StatusEvent : UnityEvent<bool> { }
 public class ItemInfoEvent : UnityEvent<ItemInformation.Item> { }
 [System.Serializable]
 public class BattleEvent : UnityEvent<string> { }
+[System.Serializable]
+public class NodeTextEvent : UnityEvent<string> { }
