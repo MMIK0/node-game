@@ -7,37 +7,37 @@ public class RewardMenuHandler : MonoBehaviour
 {
     public Image image;
     public TextMeshProUGUI tmp;
+    public GameObject rewardMenuPopUp;
+    public Button quit;
 
     public void OnEnable()
     {
-        GetReward();
+        GetItem();
+        quit.interactable = true;
     }
 
-    public void GetReward()
+    public void GetItem()
     {
-        TargetNode node = UIManager.instance.currentNode;
-        ItemInformation.Item item = node.nodeEvent.GetRandomItem();
-        Debug.Log(item.name + " " + item.description);
+        ItemInformation.Item itemToGive = NodeManager.instance.currentItem;
+
+        RewardActivate(itemToGive);
         if (Player.instance.bagBack.Count < 4)
         {
-            Player.instance.bagBack.Add(item);
-            item.GiveStat(item.statType, item.statAmount);
-            RewardActivate(item);
+            Player.instance.GiveItem(itemToGive);
         }
         else
         {
-            Debug.Log("Didnt add");
-
+            quit.interactable = false;
+            AddOrRemove(itemToGive);
         }
+
         UIManager.instance.uiEvent.Invoke();
     }
 
     public void AddOrRemove(ItemInformation.Item item)
     {
-        Debug.Log("Please select an item to remove");
-        List<ItemInformation.Item> itemlist = new List<ItemInformation.Item>();
-        itemlist.Add(item);
-        UIManager.instance.OpenMenu(UIManager.menuType.itemMenu);
+        Player.instance.AddItemToQueue(item);
+        rewardMenuPopUp.SetActive(true);
     }
 
     public void RewardActivate(ItemInformation.Item item)

@@ -23,10 +23,8 @@ public class NodeInformation : ScriptableObject
             if(doRandomEvent != true || specialEventObj == null)
                 return eventObj.eventList[Random.Range(0, eventObj.eventList.Count)];
 
-
             return specialEventObj.eventList[Random.Range(0, specialEventObj.eventList.Count)];
         }
-
     }
 
     public List<Node> nodes = new List<Node>();

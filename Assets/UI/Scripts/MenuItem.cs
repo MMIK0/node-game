@@ -26,8 +26,18 @@ public class MenuItem : MonoBehaviour
     public void OnMouseDown()
     {
         Player.instance.RemoveItem(currentItem);
-        currentItem = null;
+        currentItem = new ItemInformation.Item();
         GetComponent<Image>().sprite = null;
+        UIManager.instance.uiEvent?.Invoke();
+        if (Player.instance.currentItemInQueue.statType != Player.StatType.none)
+        {
+            Debug.Log(Player.instance.currentItemInQueue);
+            Player.instance.GiveItem(Player.instance.currentItemInQueue);
+            currentItem = Player.instance.currentItemInQueue;
+            GetComponent<Image>().sprite = Player.instance.currentItemInQueue.icon;
+            UIManager.instance.uiEvent?.Invoke();
+            Player.instance.currentItemInQueue = new ItemInformation.Item();
+        }
     }
 
     public void OnMouseExit()
