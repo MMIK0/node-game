@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
     public static Player instance;
     [HideInInspector]
     public bool canMove;
-    private Transform realPos;
-
     public List<Stat> statsList = new List<Stat>();
     public List<ItemInformation.Item> bagBack = new List<ItemInformation.Item>();
+    public ItemInformation.Item currentItemInQueue = null;
+    public NavMeshAgent agent;
 
     public void Awake()
     {
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
         statsList.Add(new Stat(StatType.charisma, 3));
         statsList.Add(new Stat(StatType.battlePower, 3));
         statsList.Add(new Stat(StatType.tecnowledge, 3));
+        statsList.Add(new Stat(StatType.health, 3));
+        statsList.Add(new Stat(StatType.money, 3));
     }
 
     public void OnEnable()
@@ -32,13 +35,14 @@ public class Player : MonoBehaviour
         }
 
         canMove = true;
-        realPos = transform;
     }
 
     public void MovePlayer(TargetNode nodeToMove)
     {
-        realPos.position = nodeToMove.transform.position;
-        transform.position = new Vector3(realPos.position.x, realPos.position.y + 1f, realPos.position.z);
+        if (canMove)
+            agent.isStopped = false;
+
+        agent.SetDestination(nodeToMove.transform.position);
     }
     
     public Stat GetStat(StatType statType)
@@ -57,19 +61,52 @@ public class Player : MonoBehaviour
         return item;
     }
 
+    public void AddItemToQueue(ItemInformation.Item itemToAdd)
+    {
+        currentItemInQueue = itemToAdd;
+    }
+
+    public void GiveItem(ItemInformation.Item item)
+    {
+        bagBack.Add(item);
+        GetStat(item.statType).statValue += item.statAmount;
+    }
+
     public void RemoveItem(ItemInformation.Item item)
     {
-        Debug.Log(bagBack.Count);
         bagBack.Remove(item);
-        Debug.Log(bagBack.Count);
+        GetStat(item.statType).statValue -= item.statAmount;
+    }
+
+    public void GainHealth(int healthGain)
+    {
+        GetStat(StatType.health).statValue += healthGain;
+        UIManager.instance.uiEvent?.Invoke();
+    }
+    public void LoseHealth(int healthLoss)
+    {
+        GetStat(StatType.health).statValue -= healthLoss;
+        UIManager.instance.uiEvent?.Invoke();
+    }
+
+    public void HandleMoney(int moneyGain)
+    {
+        Stat stat = GetStat(StatType.money);
+        stat.statValue += moneyGain;
+        if (stat.statValue < 0)
+            stat.statValue = 0;
+        UIManager.instance.uiEvent?.Invoke();
     }
 
     public enum StatType
     {
+        none,
         charisma,
         strength,
         tecnowledge,
         battlePower,
+        health,
+        money,
     }
 
     public class Stat

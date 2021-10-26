@@ -15,9 +15,22 @@ public class ItemInformation : ScriptableObject
         public Sprite icon;
         public Player.StatType statType;
         public int statAmount;
-        public void GiveStat(Player.StatType type, int amount)
+        public Rarity rarity;
+        public LegendaryItems legendaryStatus;
+
+        public enum Rarity
         {
-            Player.instance.GetStat(type).statValue += amount;
+            random,
+            common,
+            rare,
+            legendary,
+        }
+
+        public enum LegendaryItems
+        {
+            none,
+            hammerOfThor,
+            ringOfUkko,
         }
     }
 }

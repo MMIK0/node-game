@@ -13,7 +13,7 @@ public class BagBackMenu : MonoBehaviour
 
     public void FillBagBack()
     {
-        Debug.Log("Hello");
+        Debug.Log("BackBackFilled");
         for (int i = 0; i < Player.instance.bagBack.Count; i++)
         {
             menuItems[i].currentItem = Player.instance.bagBack[i];
