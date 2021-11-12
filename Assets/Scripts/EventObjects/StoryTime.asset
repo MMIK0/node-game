@@ -45,7 +45,7 @@ MonoBehaviour:
         FollowUpEvents:
         - eventType: 2
           stat: 0
-          eventText: 
+          eventText: Reward TIme :D
           eventImage: {fileID: 0}
           enemyAdvantage: 0
           healthLoss: 0
