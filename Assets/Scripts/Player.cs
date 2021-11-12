@@ -15,12 +15,12 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
-        statsList.Add(new Stat(StatType.strength, 3));
-        statsList.Add(new Stat(StatType.charisma, 3));
-        statsList.Add(new Stat(StatType.battlePower, 3));
-        statsList.Add(new Stat(StatType.tecnowledge, 3));
-        statsList.Add(new Stat(StatType.health, 3));
-        statsList.Add(new Stat(StatType.money, 3));
+        statsList.Add(new Stat(StatType.strength, PlayerPrefs.GetInt("str")));
+        statsList.Add(new Stat(StatType.charisma, PlayerPrefs.GetInt("chari")));
+        statsList.Add(new Stat(StatType.battlePower, PlayerPrefs.GetInt("bp")));
+        statsList.Add(new Stat(StatType.tecnowledge, PlayerPrefs.GetInt("tec")));
+        statsList.Add(new Stat(StatType.health, PlayerPrefs.GetInt("hp")));
+        statsList.Add(new Stat(StatType.money, PlayerPrefs.GetInt("money")));
     }
 
     public void OnEnable()

@@ -1611,6 +1611,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 965183408424785695, guid: b89d5510e7851b649beffcd482da9c37,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1510064402537940900, guid: b89d5510e7851b649beffcd482da9c37,
         type: 3}
       propertyPath: m_AnchoredPosition.x
