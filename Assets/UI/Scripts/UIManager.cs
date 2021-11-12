@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public NodeTextEvent eventNodeTextEvent;
     public Dictionary<menuType, GameObject> menus = new Dictionary<menuType, GameObject>();
     public GameObject ActiveMenu;
+    public menuType previousMenu;
 
     public enum menuType
     {
@@ -24,6 +25,8 @@ public class UIManager : MonoBehaviour
         itemMenu,
         rewardMenu,
         eventMenu,
+        mainMenu,
+        characterMenu,
     }
 
     public void Awake()
@@ -46,6 +49,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu(menuType type)
     {
+        CloseMenu();
         GameObject menu;
         menus.TryGetValue(type, out menu);
         Debug.Log(menu);
@@ -53,8 +57,17 @@ public class UIManager : MonoBehaviour
         ActiveMenu = menu;
     }
 
+    public void OpenPreviousMenu()
+    {
+        OpenMenu(previousMenu);
+    }
+
     public void CloseMenu()
     {
+        if (ActiveMenu == null)
+            return;
+
+        previousMenu = ActiveMenu.GetComponent<MenuHandler>().menuType;
         ActiveMenu.SetActive(false);
         ActiveMenu = null;
     }

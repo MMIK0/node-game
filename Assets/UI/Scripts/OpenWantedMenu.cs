@@ -10,4 +10,9 @@ public class OpenWantedMenu : MonoBehaviour
     {
         UIManager.instance.OpenMenu(menutype);
     }
+
+    public void OpenPrevMenu()
+    {
+        UIManager.instance.OpenPreviousMenu();
+    }
 }

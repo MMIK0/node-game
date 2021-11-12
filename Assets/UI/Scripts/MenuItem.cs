@@ -15,16 +15,20 @@ public class MenuItem : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        if (currentItem.name != null)
-        {
-            informationWindow.transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, transform.position.z);
-            informationWindow.SetActive(true);
-            informationWindow.GetComponent<ItemInfoUi>().GetItemInfo(currentItem);
-        }
+        if (currentItem.name == "" || currentItem.name == null)
+            return;
+
+        Debug.Log(currentItem.name);
+        informationWindow.transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, transform.position.z);
+        informationWindow.SetActive(true);
+        informationWindow.GetComponent<ItemInfoUi>().GetItemInfo(currentItem);
     }
 
     public void OnMouseDown()
     {
+        if (currentItem.name == "")
+            return;
+
         Player.instance.RemoveItem(currentItem);
         currentItem = new ItemInformation.Item();
         GetComponent<Image>().sprite = null;

@@ -8,6 +8,9 @@ public class MenuHandler : MonoBehaviour
     public void Awake()
     {
         UIManager.instance.RegisterMenu(menuType, gameObject);
-        gameObject.SetActive(false);
+        if (menuType != UIManager.menuType.mainMenu)
+            gameObject.SetActive(false);
+        else
+            UIManager.instance.ActiveMenu = gameObject;
     }
 }
