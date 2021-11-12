@@ -11,7 +11,7 @@ public class EventObject : ScriptableObject
     public class NodeEvent
     {
         public ItemInformation itemInfo;
-        public TheRealEvent eventAction;
+        public EventActions eventAction;
 
         public ItemInformation.Item GetRandomItem()
         { 
