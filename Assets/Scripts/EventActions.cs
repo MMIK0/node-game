@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 
 [CreateAssetMenu(menuName = "EventActionSpecs")]
-public class TheRealEvent : ScriptableObject
+public class EventActions : ScriptableObject
 {
     public enum EventTypes
     {
@@ -47,24 +47,8 @@ public class TheRealEvent : ScriptableObject
                 EndEvent();
             }
 
+            Debug.Log("We are settuping Ui");
             FollowUpEvents[i].SetUpUI();
-        }
-
-        public void DoEvent()
-        {
-            if (eventType == EventTypes.gamble)
-                Gamble();
-            else if (eventType == EventTypes.getReward)
-                GetReward();
-            else if (eventType == EventTypes.loseHealth)
-                LoseHealth();
-            else if (eventType == EventTypes.handleMoney)
-                HandleMoney();
-            else if (eventType == EventTypes.story)
-                Story();
-
-            eventMenuHandler.forward.onClick.RemoveAllListeners();
-            eventMenuHandler.forward.onClick.AddListener(delegate { GetNextEvent(nextMenu); });
         }
 
         public void SetUpUI()
@@ -75,6 +59,25 @@ public class TheRealEvent : ScriptableObject
             eventMenuHandler.eventText.text = eventText;
             eventMenuHandler.forward.onClick.RemoveAllListeners();
             eventMenuHandler.forward.onClick.AddListener(delegate { DoEvent(); });
+            Debug.Log("We set up the UI");
+        }
+
+        public void DoEvent()
+        {
+            if (eventType == EventTypes.gamble)
+            {
+                eventMenuHandler.forward.onClick.RemoveAllListeners();
+                eventMenuHandler.forward.onClick.AddListener(delegate { GetNextEvent(nextMenu); });
+                Gamble();
+            }
+            else if (eventType == EventTypes.getReward)
+                GetReward();
+            else if (eventType == EventTypes.loseHealth)
+                LoseHealth();
+            else if (eventType == EventTypes.handleMoney)
+                HandleMoney();
+            else if (eventType == EventTypes.story)
+                Story();
         }
 
         public void LoseHealth()
@@ -130,6 +133,8 @@ public class TheRealEvent : ScriptableObject
         public void Story()
         {
             nextMenu = 0;
+            Debug.Log("I was achually called");
+            GetNextEvent(nextMenu);
         }
     }
 }
